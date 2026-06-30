@@ -9,7 +9,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-1.5-flash}
       - ENVIRONMENT=development
     volumes:
       - ./backend:/app
@@ -33,7 +34,7 @@ services:
       - REACT_APP_API_URL=http://localhost:8000
       - NODE_ENV=development
     volumes:
-      - ./frontend/src:/app/src
+      - ./frontend:/app
     networks:
       - jetski-network
     depends_on:
